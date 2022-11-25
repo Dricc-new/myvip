@@ -15,6 +15,9 @@ use Inertia\Inertia;
 |
 */
 
+/******************************************************Dricc****************************************************/
+
+/******************************************************Dairon***************************************************/
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -24,12 +27,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
+/******************************************************Dricc****************************************************/
+
+/******************************************************Dairon***************************************************/
+    Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
 });
