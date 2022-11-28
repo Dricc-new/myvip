@@ -34,6 +34,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
     //Pon esta ruta mas bonita es para subir imagenes y videos para los post
     Route::get('/post/create',function(){
-        return Inertia::render('Post/Create');
+        $data = [
+            'placeholder' => "Escriba un nuevo post, arrastre y suelte los archivos para añadirlos"
+        ];
+        return Inertia::render('Post/Create',$data);
     })->name('post.create');
 });

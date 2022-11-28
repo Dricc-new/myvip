@@ -302,10 +302,7 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -317,7 +314,7 @@ return [
             'icon'        => 'fa fa-home',
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+
         [
             'text' => 'Media',
             'url'  => 'admin.media',
