@@ -32,4 +32,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
 
 /******************************************************Dairon***************************************************/
     Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
+    //Pon esta ruta mas bonita es para subir imagenes y videos para los post
+    Route::get('/post/create',function(){
+        return Inertia::render('Post/Create');
+    })->name('post.create');
 });

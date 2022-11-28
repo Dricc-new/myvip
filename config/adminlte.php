@@ -109,11 +109,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'img/LOGO.png',
+            'path' => 'img/LOGO.svg',
             'alt' => 'AdminLTE Preloader Image',
-            'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'effect' => 'animation_wobble',
+            'width' => 200,
+            'height' => 200,
         ],
     ],
 
@@ -312,22 +312,78 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'text'        => 'Dashboard',
+            'route'       => 'admin',
+            'icon'        => 'fa fa-home',
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Media',
+            'url'  => 'admin.media',
+            'icon' => 'fas fa-folder',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Users',
+            'url'  => 'admin.users',
+            'icon' => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Users',
+                    'url' => 'Users',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'Identity Checks',
+                    'url' => 'Users',
+                    'icon' => 'fa fa-check',
+                ],
+                [
+                    'text' => 'Roles',
+                    'url' => 'Users',
+                    'icon' => 'fa fa-lock',
+                ],
+                [
+                    'text' => 'Wallets',
+                    'url' => 'Users',
+                    'icon' => 'fa fa-university',
+                ],
+                [
+                    'text' => 'Notifications',
+                    'url' => 'Users',
+                    'icon' => 'fa fa-bell',
+                ],
+                [
+                    'text' => 'Messages',
+                    'url' => 'Users',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'Reactions',
+                    'url' => 'Users',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'Lists',
+                    'url' => 'Users',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'List Members',
+                    'url' => 'Users',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'User Reports',
+                    'url' => 'Users',
+                    'icon' => 'fas fa-users',
+                ],
+                [
+                    'text' => 'Feactured Users',
+                    'url' => 'Users',
+                    'icon' => 'fas fa-users',
+                ],
+            ]
         ],
         [
             'text'    => 'multilevel',
