@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -34,9 +35,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
     //Pon esta ruta mas bonita es para subir imagenes y videos para los post
     Route::get('/post/create',function(){
-        $data = [
-            'placeholder' => "Escriba un nuevo post, arrastre y suelte los archivos para añadirlos"
-        ];
-        return Inertia::render('Post/Create',$data);
+        return Inertia::render('Post/Create',['placeholder' => "Escriba un nuevo post, arrastre y suelte los archivos para añadirlos"]);
     })->name('post.create');
+    Route::post('/post/create',function(Request $request){
+        if($request->hasFile(key:'list'))
+            return 'siiiiiiiiiiiiiiiiiiii';
+    })->name('post.createpost');
 });
