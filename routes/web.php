@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -40,8 +39,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     //Pon esta ruta mas bonita es para subir imagenes y videos para los post
     
     Route::prefix('/post')->name('post.')->group(function(){
-        Route::get('/create',[PostController::class,'Create'])->name('create');
-        Route::post('/addAttachments',[PostController::class,'AddAttachments'])->name('addAttachments');
-        Route::post('/save',[PostController::class,'Save'])->name('save');
+        Route::get('/new',PostController::class)->name('new');
+        Route::get('/edit/{id}',[PostController::class,'edit'])->name('edit');
+        Route::post('/addAttach',[PostController::class,'addAttach'])->name('addAttach');
+        Route::post('/delAttach',[PostController::class,'delAttach'])->name('delAttach');
+        Route::post('/save',[PostController::class,'save'])->name('save');
     });
 });

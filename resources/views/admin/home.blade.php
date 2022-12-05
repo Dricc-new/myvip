@@ -8,6 +8,7 @@
 
 @section('content')
     <p>Welcome to this beautiful admin panel.</p>
+    <div class="fa fa-hamburger"></div>
 @stop
 
 @section('css')
