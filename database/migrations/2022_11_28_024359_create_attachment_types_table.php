@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('types_attachments', function (Blueprint $table) {
+        Schema::create('attachment_types', function (Blueprint $table) {
             $table->id();
-            $table->text('type');
+            $table->text('name');
         });
     }
 

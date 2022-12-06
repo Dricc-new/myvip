@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class AttachmentType extends Model
 {
     use HasFactory;
-    protected $table = 'posts';
+    protected $table = 'attachment_types';
+    public $timestamps = false;
     protected $fillable = [
         'id',
-        'user_id',
-        'text',
-        'price',
-        'status'
+        'name',
     ];
 
-    public function user()
+    public function attachments()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Attachment::class)
     }
 }

@@ -64,7 +64,8 @@ class PostController extends Controller
         $post = Post::find($request->postId);
         $post->text = $request->text;
         $post->price = $request->price;
-        return 'save';
+        $post->save();
+        return redirect(route('dashboard'));
     }
 
     public function create_attach($ext,$type,$post){

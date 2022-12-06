@@ -34,15 +34,17 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('test',function(){
         return Auth::user()->id;
     });
-/******************************************************Dairon***************************************************/
-    Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
-    //Pon esta ruta mas bonita es para subir imagenes y videos para los post
-    
-    Route::prefix('/post')->name('post.')->group(function(){
+
+    Route::prefix('/posts')->name('post.')->group(function(){
         Route::get('/new',PostController::class)->name('new');
         Route::get('/edit/{id}',[PostController::class,'edit'])->name('edit');
         Route::post('/addAttach',[PostController::class,'addAttach'])->name('addAttach');
         Route::post('/delAttach',[PostController::class,'delAttach'])->name('delAttach');
         Route::post('/save',[PostController::class,'save'])->name('save');
     });
+
+    
+/******************************************************Dairon***************************************************/
+    Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
+    
 });
