@@ -21,4 +21,8 @@ class Attachment extends Model
     {
         return $this->belongsTo(AttachmentType::class);
     }
+
+    public function post(){
+        return $this->belongsTo(Post::class);
+    }
 }

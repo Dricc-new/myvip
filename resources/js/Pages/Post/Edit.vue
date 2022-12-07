@@ -68,17 +68,17 @@ import { useForm,Head } from '@inertiajs/inertia-vue3';
             <div @dragleave="dragOver($event)" @drop="hello($event)" draggable="true">
                 <ul class="overflow-auto h-64 border rounded" id="box-files" v-if="(thumbnails[0])">
                     <li class="inline-block " v-for="thumbnail in thumbnails">
-                        <div v-if="(thumbnail.type_id==1)" class="grid relative m-2 w-32 h-32 rounded justify-items-center shadow-slate-800 hover:shadow-lg hover:shadow-slate-800">
+                        <div v-if="(thumbnail.attachment_type_id==1)" class="grid relative m-2 w-32 h-32 rounded justify-items-center shadow-slate-800 hover:shadow-lg hover:shadow-slate-800">
                             <div class="fa fa-xmark text-2xl shadow-sm justify-self-end mx-2 text-red-400 hover:text-red-500 absolute" @click="delAttach(thumbnail.id)"></div>
                             <div class="fa fa-image text-2xl place-self-center text-gray-400 absolute"></div>
                             <img class=" object-contain w-32 h-32 rounded shadow-md bg-slate-100 inline-block " :src="'/storage/post/image/'+thumbnail.filename" >
                         </div>
-                        <div v-else-if="(thumbnail.type_id==2)" class="grid relative m-2 justify-items-center">
+                        <div v-else-if="(thumbnail.attachment_type_id==2)" class="grid relative m-2 justify-items-center">
                             <div :class="'fa fa-'+thumbnail.type+' text-2xl place-self-center text-gray-400 absolute'"></div>
                             <div class="fa fa-xmark text-2xl justify-self-end mx-2 text-red-400 absolute"></div>
                             <img class=" object-contain w-32 h-32 rounded shadow-md bg-slate-100 shadow-slate-800 hover:shadow-lg inline-block hover:shadow-slate-800 " :src="'/storage/post/music/'+thumbnail.filename" >
                         </div>
-                        <div v-else-if="(thumbnail.type_id==3)" class="grid relative m-2 justify-items-center">
+                        <div v-else-if="(thumbnail.attachment_type_id==3)" class="grid relative m-2 justify-items-center">
                             <div :class="'fa fa-'+thumbnail.type+' text-2xl place-self-center text-gray-400 absolute'"></div>
                             <div class="fa fa-xmark text-2xl justify-self-end mx-2 text-red-400 absolute"></div>
                             <img class=" object-contain w-32 h-32 rounded shadow-md bg-slate-100 shadow-slate-800 hover:shadow-lg inline-block hover:shadow-slate-800 " :src="thumbnail.filename" >

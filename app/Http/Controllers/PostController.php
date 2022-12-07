@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attachment;
 use App\Models\Post;
-use App\Models\TypeAttachment;
+use App\Models\AttachmentType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +27,7 @@ class PostController extends Controller
         $post = Post::find($id);
         if(Auth::user()->id == $post->user_id){
             return Inertia::render('Post/Edit',[
-                'thumbnails' => Attachment::query()->where('post_id',$id)->get(),
+                'thumbnails' => $post->attachments,
                 'text' => $post->text,
                 'price' => $post->price,
                 'postId' => $post->id,
@@ -53,7 +53,7 @@ class PostController extends Controller
         foreach($request->delAttach as $attach){
             $attachment = Attachment::find($attach);
             $storage = Storage::disk('public');
-            $storage->delete('/post/'.TypeAttachment::find($attachment->type_id)->type.'/'.$attachment->filename);
+            $storage->delete('/post/'.AttachmentType::find($attachment->attachment_type_id)->type.'/'.$attachment->filename);
             //$storage->delete('/post/'.TypeAttachment::find($attachment->type_id)->type.'/thumbnail/'.$attachment->filename);
             $attachment->delete();
         }
@@ -77,7 +77,7 @@ class PostController extends Controller
         $attachment = new Attachment();
         $attachment->filename = $filename;
         $attachment->driver = 1;
-        $attachment->type_id = TypeAttachment::query()->where('type',$type)->first()['id'];
+        $attachment->attachment_type_id = AttachmentType::query()->where('name',$type)->first()['id'];
         $attachment->post_id = $post;
         $attachment->save();
         return $filename;        
