@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Role;
-use App\Models\TypeAttachment;
+use App\Models\AttachmentType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -34,15 +34,15 @@ class DatabaseSeeder extends Seeder
         $admin->role_id = 1;
         $admin->save();
 
-        $type1 = new TypeAttachment();
+        $type1 = new AttachmentType();
         $type1->name = 'image';
         $type1->save();
 
-        $type2 = new TypeAttachment();
+        $type2 = new AttachmentType();
         $type2->name = 'sound';
         $type2->save();
 
-        $type3 = new TypeAttachment();
+        $type3 = new AttachmentType();
         $type3->name = 'video';
         $type3->save();
 

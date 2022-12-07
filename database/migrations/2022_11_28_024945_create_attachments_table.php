@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->text('filename');
             $table->integer('driver');
-            $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('types_attachments')->onDelete('cascade');
+            $table->unsignedBigInteger('attachment_type_id')->nullable();
+            $table->foreign('attachment_type_id')->references('id')->on('attachment_types')->onDelete('set null');
             $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->timestamps();

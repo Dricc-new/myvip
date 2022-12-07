@@ -16,4 +16,9 @@ class Attachment extends Model
         'type_id',
         'post_id',
     ];
+
+    public function attacment_type()
+    {
+        return $this->belongsTo(AttachmentType::class);
+    }
 }
