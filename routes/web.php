@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
 /******************************************************Dricc****************************************************/
     Route::get('test',function(){
-        return Auth::user()->id;
+        return Inertia::render('default');
     });
 
     Route::prefix('/posts')->name('post.')->group(function(){
@@ -43,7 +44,15 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
         Route::post('/save',[PostController::class,'save'])->name('save');
     });
 
+    Route::prefix('/settings')->name('settings.')->group(function(){
+        Route::get('/theme',[SettingsController::class,'theme'])->name('theme');
+    });
+
     
+
+    Route::get('home',function(){
+        return Inertia::render('Home',['theme' => 'red-600']);
+    })->name('home');
 /******************************************************Dairon***************************************************/
     Route::get('/dashboard', function () {return Inertia::render('Dashboard');})->name('dashboard');
     

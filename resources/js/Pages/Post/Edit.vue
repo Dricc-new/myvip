@@ -1,5 +1,6 @@
 <script setup>
 import { useForm,Head } from '@inertiajs/inertia-vue3';
+import AppLayout from '@/Layouts/Layout.vue';
     const props = defineProps({
         postId: Number,
         placeholder: String,
@@ -61,10 +62,11 @@ import { useForm,Head } from '@inertiajs/inertia-vue3';
 
 <template>
     <Head title="Create Post"/>
+    <AppLayout>
     <form @submit.prevent="submit" enctype="multipart/form-data">
     <div class="grid grid-rows-2 gap-1 mx-2 font-['Arial']">
         <div>
-            <h1 class="text-3xl text-center text-slate-700 p-2">Nueva publicacion</h1>
+            <h1 class="text-3xl text-center p-2">Nueva publicacion</h1>
             <div @dragleave="dragOver($event)" @drop="hello($event)" draggable="true">
                 <ul class="overflow-auto h-64 border rounded" id="box-files" v-if="(thumbnails[0])">
                     <li class="inline-block " v-for="thumbnail in thumbnails">
@@ -85,25 +87,26 @@ import { useForm,Head } from '@inertiajs/inertia-vue3';
                         </div>
                     </li>
                 </ul>
-                <div v-else class="border-dashed border-2 p-24 border-gray-400 flex justify-around">
-                    <h1 class="font-bold text-4xl text-center text-gray-400">ARRASTRE Y SUELTE LOS ARCHIVOS</h1>
+                <div v-else class="drag-drop-area p-24 flex justify-around">
+                    <h1 class="font-bold text-4xl">ARRASTRE Y SUELTE LOS ARCHIVOS</h1>
                 </div>
             </div>
         </div>
         <div>    
-            <textarea class="rounded-md border w-full" v-model="form.text" cols="30" rows="10" :placeholder="placeholder"></textarea>
+            <textarea class="w-full" v-model="form.text" cols="30" rows="9" :placeholder="placeholder"></textarea>
             <input id="getFile" type="file" class="hidden" multiple @change="loadFiles"/>
             <div class="columns-2 content-start">
                 <div>
-                    <button class="rounded-md border m-2 text-red-600 border-red-600 px-5 py-1" onclick="document.getElementById('getFile').click()">Añadir Archivo</button>
-                    <button class="rounded-md border m-2 text-red-600 border-red-600 px-5 py-1" >Fijar precio</button>
+                    <button class="m-2 px-5 py-1" onclick="document.getElementById('getFile').click()">Añadir Archivo</button>
+                    <button class="m-2 px-5 py-1" >Fijar precio</button>
                 </div>
                 <div class="flex justify-end">
-                    <button class="rounded-md border m-2 text-red-600 border-red-600 px-5 py-1" @click="cancel">Cancelar</button>
-                    <button class="rounded-md border m-2 text-red-600 border-red-600 px-5 py-1" @click="save">Publicar</button>
+                    <button class="m-2 px-5 py-1" @click="cancel">Cancelar</button>
+                    <button class="m-2 px-5 py-1" @click="save">Publicar</button>
                 </div>
             </div>
         </div>
     </div>
     </form>
+</AppLayout>
 </template>

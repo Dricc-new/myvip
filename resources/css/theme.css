@@ -1,10 +1,3 @@
-@import "@fortawesome/fontawesome-free/css/all.css";
-@import "@fortawesome/fontawesome-free/css/brands.css";
-@import "@fortawesome/fontawesome-free/css/regular.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root{
     --sidebar-txt-color-1:#201c49;
@@ -54,29 +47,6 @@ footer{
     box-shadow: 0px -1px 4px var(--border-color-1);
 }
 
-input[type=color]{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 40px;
-    height: 43px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-}
-
-input[type=color]::-webkit-color-swatch{
-    border-radius: var(--border-radius);
-    border:none;
-    box-shadow: 1px 1px 1px var(--border-color-1);
-}
-
-input[type=color]::-moz-color-swatch{
-    border-radius: var(--border-radius);
-    border:none;
-    box-shadow: 1px 1px 2px var(--border-color-1);
-}
-
 
 .sidebar{
     @apply w-14 transition duration-200 hover:transition-all hover:duration-200 hover:w-72 overflow-x-hidden  shadow-md fixed inset-y-0 z-50;
@@ -122,11 +92,11 @@ input[type=color]::-moz-color-swatch{
     color: #6e6e6e;
 }
 
-.txt-c1{
+.txt-1{
     color: var(--txt-color-1);
 }
 
-.txt-c2{
+.txt-2{
     color: var(--txt-color-2);
 }
 
@@ -150,32 +120,12 @@ input[type=color]::-moz-color-swatch{
     border-right-width: var(--border-size);
 }
 
-.border-tl{
-    border-top-width: var(--border-size);
-    border-left-width: var(--border-size);
-}
-
-.border-tr{
-    border-top-width: var(--border-size);
-    border-right-width: var(--border-size);
-}
-
-.border-bl{
-    border-bottom-width: var(--border-size);
-    border-left-width: var(--border-size);
-}
-
-.border-br{
-    border-bottom-width: var(--border-size);
-    border-right-width: var(--border-size);
-}
-
 .border-c1{
-    border-color: var(--border-color-1);
+    border-color: var(--background-color-1);
 }
 
 .border-c2{
-    border-color: var(--border-color-2);
+    border-color: var(--background-color-2);
 }
 
 .rounded{
