@@ -27,8 +27,9 @@ var root = document.querySelector(':root');
     <Head :title="title" />
     <div class="font-['Arial']">
         <aside class="sidebar">
-            <Link :href="route('settings.theme')">
-                <div class="fa fa-user-circle text-5xl p-1 py-5"></div>
+            <Link :href="route('profile',{id:'My'})">
+                
+                <h1><i class="fa fa-user-circle text-5xl p-1 py-5"></i>UserName</h1>
             </Link>
             <nav>
                 <h1>
@@ -80,12 +81,6 @@ var root = document.querySelector(':root');
                         <i class="fa fa-users"></i>Subscripciones</h1>
                     </Link>
                 </li>
-                <li>
-                    <Link :href="route('home')"> 
-                        <h1>
-                        <i class="mx-1 fa fa-wrench"></i>Settings</h1>
-                    </Link>
-                </li>
                 <br class="p-5">
                 <br class="p-5">
                 <li>
@@ -102,14 +97,14 @@ var root = document.querySelector(':root');
                 </li>
             </ul>
         </aside>
-        <main class="mx-16">
+        <main class="mx-16 mb-16">
             <slot />
         </main>
-        <footer class="fixed bottom-0 inset-x-0 z-40  p-3 ">
+        <footer class="fixed txt-c1 bottom-0 inset-x-0 z-40  p-3 bg-color-primary-1 ">
             <h1 class="mx-16">© 2022 Galerias VIP. Todos los derechos reservados.</h1>
-            <i class="fixed right-2 bottom-1 m-2 text-2xl fa-brands fa-tiktok" aria-hidden="true"></i>
-            <i class="fixed right-12 bottom-1 m-2 text-2xl fa-brands fa-facebook" aria-hidden="true"></i>
-            <i class="fixed right-24 bottom-1 m-2 text-2xl fa-brands fa-instagram" aria-hidden="true"></i>
+            <i class="fixed txt-c1 right-2 bottom-1 m-2 text-2xl fa-brands fa-tiktok" aria-hidden="true"></i>
+            <i class="fixed txt-c1 right-12 bottom-1 m-2 text-2xl fa-brands fa-facebook" aria-hidden="true"></i>
+            <i class="fixed txt-c1 right-24 bottom-1 m-2 text-2xl fa-brands fa-instagram" aria-hidden="true"></i>
         </footer>
     </div>
 </template>

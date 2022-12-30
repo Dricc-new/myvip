@@ -5,7 +5,7 @@
 <template>
     <AppLayout>
         <nav>
-            <ul class="m-2 txt-1">
+            <ul class="m-2 txt-c1">
                 <li class="inline-block w-32 border-br rounded-br text-center border-c1">
                     <i class="mx-1 fa fa-palette"></i> 
                     <h1 class="mx-1 inline-block">Theme</h1>
