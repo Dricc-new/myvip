@@ -19,7 +19,7 @@
     --border-color-1: #091131;
     --border-color-2: #ececec;
     --background-color-primary-1  : #ffffff;
-    --background-color-secundary-1: #04001d;
+    --background-color-secundary-1: #1f1f1f;
     --background-color-primary-2  : #f1f1f1;
     --background-color-secundary-2: #3f3f3f;
     --background-color-primary-3  : #dfdfdf;
@@ -32,6 +32,24 @@
     --border-size: 1px;
     --border-radius: 6px;
 }
+
+/**********************/
+.propuestas{
+    margin: 12px;
+    border-width: var(--border-size);
+    border-radius: var(--border-radius);
+    border-color: var(--border-color-2);
+    height: calc(100vh - 128px);
+}
+
+.focusItem{
+    border-bottom-width:calc(var(--border-size) + 3px);    
+}
+
+.isHover:hover{
+    border-bottom-width:calc(var(--border-size) + 3px);
+}
+/**********************/
 
 body{
     background-color: var(--background-color-primary-1);
@@ -192,6 +210,36 @@ input[type=color]::-moz-color-swatch{
     box-shadow: var(--border-size) var(--border-size) 3px var(--border-color-1);
 }
 
+.box-scroll{
+    overflow:auto;
+    height: calc(100vh - 64px);
+}
+
+.box-scroll::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.box-scroll::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.box-scroll::-webkit-scrollbar-button:increment,.box-scroll::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.box-scroll::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.box-scroll::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.box-scroll::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
 
 .box-items{
     border-radius: var(--border-radius);
@@ -251,11 +299,16 @@ input[type=color]::-moz-color-swatch{
 }
 
 .sidebar{
-    @apply w-14 transition duration-200 hover:transition-all hover:duration-200 hover:w-72 overflow-x-hidden  shadow-md fixed inset-y-0 z-50;
+    @apply /* w-14 transition duration-200 hover:transition-all hover:duration-200 hover: */w-72 overflow-x-hidden  shadow-md fixed inset-y-0 z-40;
     background-color: var(--sidebar-bg-color-1);
     color: var(--sidebar-txt-color-1);
     box-shadow: 0px -1px 4px var(--sidebar-border-color-2);
 }
+
+.sidebar-right{
+    @apply right-0;
+}
+
 
 .sidebar h1{
     @apply truncate;

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AcountController;
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Foundation\Application;
@@ -31,12 +32,22 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/profile/{id}',AcountController::class)->name('profile');
+Route::prefix('/profile/{id}')->name('profile.')->group(function(){
+    Route::get('/posts',[AcountController::class,'posts'])->name('posts');
+    Route::get('/medias',[AcountController::class,'medias'])->name('medias');    
+});
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
 /******************************************************Dricc****************************************************/
     Route::get('test',function(){
         return Inertia::render('default');
+    });
+
+    Route::prefix('/notifications')->name('notifications.')->group(function(){
+        Route::get('/all',NotificationsController::class)->name('all');
+        Route::get('/messages',[NotificationsController::class,'messages'])->name('messages');
+        Route::get('/subscriptions',[NotificationsController::class,'subscriptions'])->name('subscriptions');
+        Route::get('/tips',[NotificationsController::class,'tips'])->name('tips');
     });
 
     Route::prefix('/posts')->name('post.')->group(function(){

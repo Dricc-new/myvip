@@ -27,25 +27,19 @@ var root = document.querySelector(':root');
     <Head :title="title" />
     <div class="font-['Arial']">
         <aside class="sidebar">
-            <Link :href="route('profile',{id:'My'})">
+            <Link :href="route('profile.posts',{id:'My'})">
                 
                 <h1><i class="fa fa-user-circle text-5xl p-1 py-5"></i>UserName</h1>
             </Link>
-            <nav>
-                <h1>
-                    <div class="m-3 pl-1 fa fa-search"></div>
-                    <input type="text" class="m-2 w-48 h-8 rounded focus:border-none" placeholder="Search..." name="" id="">
-                </h1>
-            </nav>
             <ul>
                 <li>
-                    <Link :href="route('home')"> 
+                    <Link :href="route('home')">
                         <h1>
                         <i class="mx-1 fa fa-home-lg"></i>Home</h1>
                     </Link>
                 </li>
                 <li>
-                    <Link :href="route('home')"> 
+                    <Link :href="route('notifications.all')"> 
                         <h1>
                         <i class=" text-2xl pl-1 fa fa-bell fa-shake"></i>Notificaciones</h1>
                     </Link>
@@ -97,11 +91,13 @@ var root = document.querySelector(':root');
                 </li>
             </ul>
         </aside>
-        <main class="mx-16 mb-16">
-            <slot />
-        </main>
-        <footer class="fixed txt-c1 bottom-0 inset-x-0 z-40  p-3 bg-color-primary-1 ">
-            <h1 class="mx-16">© 2022 Galerias VIP. Todos los derechos reservados.</h1>
+        <div class="ml-72 overflow-hidden">
+            <main class="box-scroll">
+                <slot />
+            </main>
+        </div>
+        <footer class="fixed txt-c1 bottom-0 inset-x-0 z-50  p-3 bg-color-primary-1 ">
+            <h1 class="mx-4">© 2022 Galerias VIP. Todos los derechos reservados.</h1>
             <i class="fixed txt-c1 right-2 bottom-1 m-2 text-2xl fa-brands fa-tiktok" aria-hidden="true"></i>
             <i class="fixed txt-c1 right-12 bottom-1 m-2 text-2xl fa-brands fa-facebook" aria-hidden="true"></i>
             <i class="fixed txt-c1 right-24 bottom-1 m-2 text-2xl fa-brands fa-instagram" aria-hidden="true"></i>
