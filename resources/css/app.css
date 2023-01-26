@@ -49,6 +49,22 @@
 .isHover:hover{
     border-bottom-width:calc(var(--border-size) + 3px);
 }
+
+.BoxImages{
+    --item: 1;
+}
+
+.BoxImages img{
+    display: none;
+}
+
+.BoxImages img:nth-of-type(var(--item)){
+    display: block;
+}
+
+.fullScreenMedia{
+    position: absolute;
+}
 /**********************/
 
 body{

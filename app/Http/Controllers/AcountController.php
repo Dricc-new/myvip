@@ -14,16 +14,7 @@ class AcountController extends Controller
         $data = ['idUser' => $id];
         if ($id == 'My') {
             $data += ['isUser' => true];
-            $data +=['Posts' => []];
-            $length = 0;
-            foreach(Auth::user()->posts as $post){
-                $length++;
-                $data['Posts'] += [$post->id => []];
-                $data['Posts'][$post->id]+=['text' => $post->text];
-                $data['Posts'][$post->id]+=['price' => $post->price];
-                $data['Posts'][$post->id]+=['attachs' => $post->attachments];
-            }
-            $data['Posts'] +=['length' => $length];
+            $data +=['Posts' => $this->getPosts(Auth::user()->posts)];
         }
         else
             $data += ['isUser' => false];                
@@ -40,6 +31,34 @@ class AcountController extends Controller
             $data += ['isUser' => false];                
              
         return Inertia::render('Account/Medias',$data);
+    }
+
+    private function getPosts($posts){
+        $data = [];
+        $length = 0;
+        foreach ($posts as $post) {
+            $length++;
+            $data += [$post->id => []];
+            $data[$post->id]+=['id' => $post->id];
+            $data[$post->id]+=['text' => $post->text];
+            $data[$post->id]+=['price' => $post->price];
+            if($post->attachments == '[]'){
+                $data[$post->id]+=['attachs' => 'null'];
+                $data[$post->id]+=['length' => 0];
+            }
+            else{
+                $data[$post->id]+=['attachs' => $post->attachments];
+                $i = 0;
+                foreach($post->attachments as $attach){
+                    $i += 1;
+                }
+                $data[$post->id]+=['length' => $i];
+            }
+
+        }
+        $data +=['length' => $length];
+         
+         return $data;
     }
 
 }

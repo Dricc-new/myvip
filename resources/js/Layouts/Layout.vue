@@ -1,10 +1,13 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
 
+const props = defineProps({
+        sidebarRight: Boolean,
+});
+/* 
 var root = document.querySelector(':root');
 
-
-/*     
+    
     root.style.setProperty('--sidebar-txt-color-1'      ,style.sb_txt_c_1;
     root.style.setProperty('--sidebar-txt-color-2'      ,style.sb_txt_c_2;
     root.style.setProperty('--sidebar-bg-color-1'       ,style.sb_bg_c_1;
@@ -80,7 +83,7 @@ var root = document.querySelector(':root');
                 <li>
                     <Link :href="route('home')"> 
                         <h1>
-                        <i class="mx-1 fa-solid fa-circle-dot"></i>ir en directo</h1>
+                        <i class="mx-1 far fa-circle-dot"></i>ir en directo</h1>
                     </Link>
                 </li>
                 <li>
@@ -91,12 +94,35 @@ var root = document.querySelector(':root');
                 </li>
             </ul>
         </aside>
-        <div class="ml-72 overflow-hidden">
+        <div  v-if="sidebarRight">
+            <aside class="sidebar sidebar-right">
+                <nav>
+                    <h1>
+                        <div class="m-3 pl-1 fa fa-search"></div>
+                        <input type="text" class="m-2 w-48 h-8 rounded focus:border-none" placeholder="Search..." name="" id="">
+                    </h1>
+                </nav>
+                <div class="propuestas">
+                    <h1 class="m-3 text-xl">Propuestas</h1>
+                    <div class="fixed right-0 top-16 m-3">
+                        <i class="inline-block fa fa-tag"></i>
+                        <i class="inline-block fa fa-refresh"></i>
+                    </div>
+                </div>
+
+            </aside>
+            <div class="mx-72 overflow-hidden">
+                <main class="box-scroll">
+                    <slot />
+                </main>
+            </div>
+        </div>
+        <div class="ml-72 overflow-hidden" v-else>
             <main class="box-scroll">
                 <slot />
             </main>
         </div>
-        <footer class="fixed txt-c1 bottom-0 inset-x-0 z-50  p-3 bg-color-primary-1 ">
+        <footer class="fixed txt-c1 bottom-0 inset-x-0 z-40  p-3 bg-color-primary-1 ">
             <h1 class="mx-4">© 2022 Galerias VIP. Todos los derechos reservados.</h1>
             <i class="fixed txt-c1 right-2 bottom-1 m-2 text-2xl fa-brands fa-tiktok" aria-hidden="true"></i>
             <i class="fixed txt-c1 right-12 bottom-1 m-2 text-2xl fa-brands fa-facebook" aria-hidden="true"></i>
